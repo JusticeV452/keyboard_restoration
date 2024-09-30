@@ -1,6 +1,7 @@
-// #include "Keyboard.h"
 #include "button.h"
 #include "helpers.h"
+#include "hidkeyboard.h"
+#include "Wire.h"
 
 // Buttons
 const int BUTTON_1 = 45;
@@ -50,8 +51,8 @@ int lower_case_letters = 1;
 uint32_t delay_timer;
 uint32_t repeat_timer;
 uint8_t key_repeat = 0;
-int REPEAT_DELAY = 320; // 300
-int REPEAT_RATE = 200; // 400
+int REPEAT_DELAY = 320;
+int REPEAT_RATE = 200;
 
 void drive(int dimension)
 {
@@ -187,11 +188,6 @@ unsigned long keypad_scan(void)
     return result;
 }
 
-
-#include "hidkeyboard.h"
-#include "Wire.h"
-#if CFG_TUD_HID
-// #define KEYBOARD_I2C_ADDR 0X5f
 
 HIDkeyboard dev;
 
